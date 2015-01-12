@@ -11,7 +11,9 @@
 
 #pragma mark - Definitions
 
-#define MAX_PIXELS 22
+#define FRAME_RATE 10.0
+
+#define PIXEL_COUNT_MAX 22
 #define PIXEL_BORDER 0.10
 #define PIXEL_CORNER_RADIUS 0.10
 
@@ -32,13 +34,13 @@
 {
     self = [super initWithFrame:frame isPreview:isPreview];
     if (self) {
-        [self setAnimationTimeInterval:1/10.0];
+        [self setAnimationTimeInterval:1/FRAME_RATE];
 
 		self.pixels = [NSMutableArray array];
 		int width = self.bounds.size.width;
 		int height = self.bounds.size.height;
 
-		int pixelSize = MAX(width, height) / MAX_PIXELS;
+		int pixelSize = MAX(width, height) / PIXEL_COUNT_MAX;
 
 		int pixelsPerRow = width / pixelSize;
 		int pixelsPerCol = height / pixelSize;
@@ -56,7 +58,7 @@
 				MysterioPixel *pixel = [MysterioPixel pixelWithRect:rect
 														 borderSize:pixelSize * PIXEL_BORDER
 													   cornerRadius:pixelSize * PIXEL_CORNER_RADIUS
-															  color:[NSColor blueColor]];
+															  color:[[NSColor blueColor] colorWithAlphaComponent:0.75]];
 				[[self.pixels objectAtIndex:x] addObject:pixel];
 			}
 		}
@@ -86,9 +88,9 @@
 	for (NSArray *column in self.pixels) {
 		for (MysterioPixel *pixel in column) {
 			if (SSRandomIntBetween(0, 1) == 0) {
-				[black setFill];
+				[black set];
 			} else {
-				[pixel.color setFill];
+				[pixel.color set];
 			}
 			[pixel fill];
 		}
