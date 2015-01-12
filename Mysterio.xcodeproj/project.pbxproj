@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		889252351A62E21700C7A9C9 /* MysterioView.h in Headers */ = {isa = PBXBuildFile; fileRef = 889252341A62E21700C7A9C9 /* MysterioView.h */; };
 		889252371A62E21700C7A9C9 /* MysterioView.m in Sources */ = {isa = PBXBuildFile; fileRef = 889252361A62E21700C7A9C9 /* MysterioView.m */; };
+		88FAFBC41A645559000110F7 /* MysterioPixel.h in Headers */ = {isa = PBXBuildFile; fileRef = 88FAFBC21A645559000110F7 /* MysterioPixel.h */; };
+		88FAFBC51A645559000110F7 /* MysterioPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FAFBC31A645559000110F7 /* MysterioPixel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +18,8 @@
 		889252331A62E21700C7A9C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		889252341A62E21700C7A9C9 /* MysterioView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MysterioView.h; sourceTree = "<group>"; };
 		889252361A62E21700C7A9C9 /* MysterioView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MysterioView.m; sourceTree = "<group>"; };
+		88FAFBC21A645559000110F7 /* MysterioPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MysterioPixel.h; sourceTree = "<group>"; };
+		88FAFBC31A645559000110F7 /* MysterioPixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysterioPixel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,8 @@
 		889252311A62E21700C7A9C9 /* Mysterio */ = {
 			isa = PBXGroup;
 			children = (
+				88FAFBC21A645559000110F7 /* MysterioPixel.h */,
+				88FAFBC31A645559000110F7 /* MysterioPixel.m */,
 				889252341A62E21700C7A9C9 /* MysterioView.h */,
 				889252361A62E21700C7A9C9 /* MysterioView.m */,
 				889252321A62E21700C7A9C9 /* Supporting Files */,
@@ -71,6 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				889252351A62E21700C7A9C9 /* MysterioView.h in Headers */,
+				88FAFBC41A645559000110F7 /* MysterioPixel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88FAFBC51A645559000110F7 /* MysterioPixel.m in Sources */,
 				889252371A62E21700C7A9C9 /* MysterioView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +271,7 @@
 				8892523C1A62E21700C7A9C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

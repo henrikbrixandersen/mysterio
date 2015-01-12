@@ -6,13 +6,14 @@
 //  Copyright (c) 2015 Henrik Brix Andersen. All rights reserved.
 //
 
+#import "MysterioPixel.h"
 #import "MysterioView.h"
 
 #pragma mark - Definitions
 
 #define MAX_PIXELS 22
-#define PIXEL_SEPARATION 16
-#define PIXEL_ROUNDING 10
+#define PIXEL_BORDER 0.10
+#define PIXEL_CORNER_RADIUS 0.10
 
 #pragma mark - Private Interface
 
@@ -24,8 +25,6 @@
 @end
 
 #pragma mark -
-
-#pragma mark TODO: Add
 
 @implementation MysterioView
 
@@ -44,25 +43,23 @@
 		int pixelsPerRow = width / pixelSize;
 		int pixelsPerCol = height / pixelSize;
 
-		int rowOffset = (width - pixelSize * pixelsPerRow) / 2;
-		int colOffset = (height - pixelSize * pixelsPerCol) / 2;
+		int xOffset = (width - pixelSize * pixelsPerRow) / 2;
+		int yOffset = (height - pixelSize * pixelsPerCol) / 2;
 
 		for (int x = 0; x < pixelsPerRow; x++) {
 			[self.pixels addObject:[NSMutableArray array]];
 
 			for (int y = 0; y < pixelsPerCol; y++) {
-				NSRect rect = NSMakeRect(rowOffset + x * pixelSize + pixelSize / PIXEL_SEPARATION,
-										 colOffset + y * pixelSize + pixelSize / PIXEL_SEPARATION,
-										 pixelSize - pixelSize / (PIXEL_SEPARATION / 2),
-										 pixelSize - pixelSize / (PIXEL_SEPARATION / 2));
-				NSBezierPath *pixel = [NSBezierPath bezierPathWithRoundedRect:rect
-																	  xRadius:pixelSize / PIXEL_ROUNDING
-																	  yRadius:pixelSize / PIXEL_ROUNDING];
-
+				NSRect rect = NSMakeRect(xOffset + x * pixelSize,
+										 yOffset + y * pixelSize,
+										 pixelSize, pixelSize);
+				MysterioPixel *pixel = [MysterioPixel pixelWithRect:rect
+														 borderSize:pixelSize * PIXEL_BORDER
+													   cornerRadius:pixelSize * PIXEL_CORNER_RADIUS
+															  color:[NSColor blueColor]];
 				[[self.pixels objectAtIndex:x] addObject:pixel];
 			}
 		}
-
     }
     return self;
 }
@@ -84,15 +81,14 @@
 
 - (void)animateOneFrame
 {
-	NSColor *black = [NSColor blueColor];
-	NSColor *blue = [NSColor blackColor];
+	NSColor *black = [NSColor blackColor];
 
 	for (NSArray *column in self.pixels) {
-		for (NSBezierPath *pixel in column) {
+		for (MysterioPixel *pixel in column) {
 			if (SSRandomIntBetween(0, 1) == 0) {
 				[black setFill];
 			} else {
-				[blue setFill];
+				[pixel.color setFill];
 			}
 			[pixel fill];
 		}

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Henrik Brix Andersen. All rights reserved.
 //
 
-#import <ScreenSaver/ScreenSaver.h>
+@import ScreenSaver;
 
 @interface MysterioView : ScreenSaverView
 
