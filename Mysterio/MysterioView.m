@@ -23,6 +23,8 @@
 
 @property (strong, nonatomic) NSArray *pixels;
 
++ (NSArray*)createPixelsWithSize:(NSInteger)size color:(NSColor*)color rows:(NSInteger)rows columns:(NSInteger)columns xOffset:(NSInteger)xOffset yOffset:(NSInteger)yOffset;
+
 @end
 
 #pragma mark -
@@ -33,39 +35,49 @@
 {
     self = [super initWithFrame:frame isPreview:isPreview];
     if (self) {
-        [self setAnimationTimeInterval:1/FRAME_RATE];
+        [self setAnimationTimeInterval:1 / FRAME_RATE];
 
-		self.pixels = [NSMutableArray array];
 		int width = self.bounds.size.width;
 		int height = self.bounds.size.height;
 
 		int pixelSize = MAX(width, height) / PIXEL_COUNT_MAX;
 
-		int pixelsPerRow = width / pixelSize;
-		int pixelsPerCol = height / pixelSize;
+		int rows = width / pixelSize;
+		int cols = height / pixelSize;
 
-		int xOffset = (width - pixelSize * pixelsPerRow) / 2;
-		int yOffset = (height - pixelSize * pixelsPerCol) / 2;
+		int xOffset = (width - pixelSize * rows) / 2;
+		int yOffset = (height - pixelSize * cols) / 2;
 
-		NSMutableArray *rows = [NSMutableArray arrayWithCapacity:pixelsPerRow];
-		for (int x = 0; x < pixelsPerRow; x++) {
-			NSMutableArray *col = [NSMutableArray arrayWithCapacity:pixelsPerCol];
-
-			for (int y = 0; y < pixelsPerCol; y++) {
-				NSRect rect = NSMakeRect(xOffset + x * pixelSize,
-										 yOffset + y * pixelSize,
-										 pixelSize, pixelSize);
-				MysterioPixel *pixel = [MysterioPixel pixelWithRect:rect
-														 borderSize:pixelSize * PIXEL_BORDER
-													   cornerRadius:pixelSize * PIXEL_CORNER_RADIUS
-															  color:[[NSColor blueColor] colorWithAlphaComponent:0.75]];
-				[col addObject:pixel];
-			}
-			[rows addObject:[NSArray arrayWithArray:col]];
-		}
-		self.pixels = [NSArray arrayWithArray:rows];
+		self.pixels = [MysterioView createPixelsWithSize:pixelSize
+												   color:[NSColor blueColor]
+													rows:rows
+												 columns:cols
+												 xOffset:xOffset
+												 yOffset:yOffset];
     }
     return self;
+}
+
++ (NSArray*)createPixelsWithSize:(NSInteger)size color:(NSColor*)color rows:(NSInteger)rows columns:(NSInteger)columns xOffset:(NSInteger)xOffset yOffset:(NSInteger)yOffset
+{
+	NSMutableArray *rowArray = [NSMutableArray arrayWithCapacity:rows];
+	for (int x = 0; x < rows; x++) {
+		NSMutableArray *colArray = [NSMutableArray arrayWithCapacity:columns];
+
+		for (int y = 0; y < columns; y++) {
+			NSRect rect = NSMakeRect(xOffset + x * size,
+									 yOffset + y * size,
+									 size, size);
+			MysterioPixel *pixel = [MysterioPixel pixelWithRect:rect
+													 borderSize:size * PIXEL_BORDER
+												   cornerRadius:size * PIXEL_CORNER_RADIUS
+														  color:color];
+			[colArray addObject:pixel];
+		}
+		[rowArray addObject:[NSArray arrayWithArray:colArray]];
+	}
+
+	return [NSArray arrayWithArray:rowArray];
 }
 
 - (void)startAnimation
