@@ -21,8 +21,7 @@
 
 @interface MysterioView()
 
-#pragma mark TODO: NSArray as property
-@property (strong, nonatomic) NSMutableArray *pixels;
+@property (strong, nonatomic) NSArray *pixels;
 
 @end
 
@@ -48,8 +47,9 @@
 		int xOffset = (width - pixelSize * pixelsPerRow) / 2;
 		int yOffset = (height - pixelSize * pixelsPerCol) / 2;
 
+		NSMutableArray *rows = [NSMutableArray arrayWithCapacity:pixelsPerRow];
 		for (int x = 0; x < pixelsPerRow; x++) {
-			[self.pixels addObject:[NSMutableArray array]];
+			NSMutableArray *col = [NSMutableArray arrayWithCapacity:pixelsPerCol];
 
 			for (int y = 0; y < pixelsPerCol; y++) {
 				NSRect rect = NSMakeRect(xOffset + x * pixelSize,
@@ -59,9 +59,11 @@
 														 borderSize:pixelSize * PIXEL_BORDER
 													   cornerRadius:pixelSize * PIXEL_CORNER_RADIUS
 															  color:[[NSColor blueColor] colorWithAlphaComponent:0.75]];
-				[[self.pixels objectAtIndex:x] addObject:pixel];
+				[col addObject:pixel];
 			}
+			[rows addObject:[NSArray arrayWithArray:col]];
 		}
+		self.pixels = [NSArray arrayWithArray:rows];
     }
     return self;
 }
@@ -85,14 +87,15 @@
 {
 	NSColor *black = [NSColor blackColor];
 
+	[black set];
+	[NSBezierPath fillRect:self.bounds];
+
 	for (NSArray *column in self.pixels) {
 		for (MysterioPixel *pixel in column) {
-			if (SSRandomIntBetween(0, 1) == 0) {
-				[black set];
-			} else {
+			if (SSRandomIntBetween(0, 1) == 1) {
 				[pixel.color set];
+				[pixel fill];
 			}
-			[pixel fill];
 		}
 	}
 
