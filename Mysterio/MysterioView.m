@@ -21,7 +21,8 @@
 
 @interface MysterioView()
 
-@property (strong, nonatomic) NSArray *pixels;
+@property (strong, nonatomic) NSArray *bluePixels;
+@property (strong, nonatomic) NSArray *whitePixels;
 
 + (NSArray*)createPixelsWithSize:(NSInteger)size color:(NSColor*)color rows:(NSInteger)rows columns:(NSInteger)columns xOffset:(NSInteger)xOffset yOffset:(NSInteger)yOffset;
 
@@ -48,13 +49,20 @@
 		int xOffset = (width - pixelSize * rows) / 2;
 		int yOffset = (height - pixelSize * cols) / 2;
 
-		self.pixels = [MysterioView createPixelsWithSize:pixelSize
-												   color:[NSColor blueColor]
-													rows:rows
-												 columns:cols
-												 xOffset:xOffset
-												 yOffset:yOffset];
-    }
+		self.bluePixels = [MysterioView createPixelsWithSize:pixelSize
+													   color:[[NSColor blueColor] colorWithAlphaComponent:0.75]
+														rows:rows
+													 columns:cols
+													 xOffset:xOffset
+													 yOffset:yOffset];
+		self.whitePixels = [MysterioView createPixelsWithSize:pixelSize
+													   color:[[NSColor whiteColor] colorWithAlphaComponent:0.75]
+														rows:rows
+													 columns:cols
+													 xOffset:xOffset
+													 yOffset:yOffset];
+	}
+
     return self;
 }
 
@@ -102,7 +110,16 @@
 	[black set];
 	[NSBezierPath fillRect:self.bounds];
 
-	for (NSArray *column in self.pixels) {
+	for (NSArray *column in self.bluePixels) {
+		for (MysterioPixel *pixel in column) {
+			if (SSRandomIntBetween(0, 1) == 1) {
+				[pixel.color set];
+				[pixel fill];
+			}
+		}
+	}
+
+	for (NSArray *column in self.whitePixels) {
 		for (MysterioPixel *pixel in column) {
 			if (SSRandomIntBetween(0, 1) == 1) {
 				[pixel.color set];
