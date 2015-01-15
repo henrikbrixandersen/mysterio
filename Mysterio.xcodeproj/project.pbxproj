@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8869FAF51A672A8C00DF8030 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 8869FAF41A672A8C00DF8030 /* thumbnail.png */; };
+		8869FAF71A68579D00DF8030 /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8869FAF61A68579D00DF8030 /* thumbnail@2x.png */; };
 		889252351A62E21700C7A9C9 /* MysterioView.h in Headers */ = {isa = PBXBuildFile; fileRef = 889252341A62E21700C7A9C9 /* MysterioView.h */; };
 		889252371A62E21700C7A9C9 /* MysterioView.m in Sources */ = {isa = PBXBuildFile; fileRef = 889252361A62E21700C7A9C9 /* MysterioView.m */; };
 		88FAFBC41A645559000110F7 /* MysterioPixel.h in Headers */ = {isa = PBXBuildFile; fileRef = 88FAFBC21A645559000110F7 /* MysterioPixel.h */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8869FAF41A672A8C00DF8030 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail.png; sourceTree = "<group>"; };
+		8869FAF61A68579D00DF8030 /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail@2x.png"; sourceTree = "<group>"; };
 		8892522F1A62E21700C7A9C9 /* Mysterio.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Mysterio.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		889252331A62E21700C7A9C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		889252341A62E21700C7A9C9 /* MysterioView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MysterioView.h; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 			isa = PBXGroup;
 			children = (
 				889252331A62E21700C7A9C9 /* Info.plist */,
+				8869FAF41A672A8C00DF8030 /* thumbnail.png */,
+				8869FAF61A68579D00DF8030 /* thumbnail@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -138,6 +144,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8869FAF51A672A8C00DF8030 /* thumbnail.png in Resources */,
+				8869FAF71A68579D00DF8030 /* thumbnail@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
