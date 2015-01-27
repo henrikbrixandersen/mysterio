@@ -12,6 +12,7 @@
 
 @interface MysterioPixel()
 
+@property (assign, nonatomic) NSRect rect;
 @property (strong, nonatomic) NSBezierPath *path;
 
 @end
@@ -34,6 +35,7 @@
 		pixel.path = [NSBezierPath bezierPathWithRoundedRect:pixelRect
 													 xRadius:cornerRadius
 													 yRadius:cornerRadius];
+		pixel.rect = rect;
 		pixel.color = color;
 	}
 

@@ -6,12 +6,13 @@
 //  Copyright (c) 2015 Henrik Brix Andersen. All rights reserved.
 //
 
-#import "MysterioPixel.h"
+#import "MysterioLayer.h"
+#import "MysterioBlueLayerAnimationDelegate.h"
 #import "MysterioView.h"
 
 #pragma mark - Definitions
 
-#define FRAME_RATE 5.0
+#define FRAME_RATE 10.0
 
 #define PIXEL_COUNT_MAX 22
 #define PIXEL_BORDER 0.10
@@ -21,43 +22,14 @@
 
 @interface MysterioView()
 
-@property (strong, nonatomic) NSArray *bluePixels;
-@property (strong, nonatomic) NSArray *whitePixels;
-
-+ (NSArray*)createPixelsWithSize:(NSInteger)size
-						   color:(NSColor*)color
-							rows:(NSInteger)rows
-						 columns:(NSInteger)columns
-						 xOffset:(NSInteger)xOffset
-						 yOffset:(NSInteger)yOffset;
+@property (strong, nonatomic) MysterioLayer *blueLayer;
+@property (strong, nonatomic) MysterioLayer *whiteLayer;
 
 @end
 
 #pragma mark -
 
 @implementation MysterioView
-
-+ (NSArray*)createPixelsWithSize:(NSInteger)size color:(NSColor*)color rows:(NSInteger)rows columns:(NSInteger)columns xOffset:(NSInteger)xOffset yOffset:(NSInteger)yOffset
-{
-	NSMutableArray *rowArray = [NSMutableArray arrayWithCapacity:rows];
-	for (int x = 0; x < rows; x++) {
-		NSMutableArray *colArray = [NSMutableArray arrayWithCapacity:columns];
-
-		for (int y = 0; y < columns; y++) {
-			NSRect rect = NSMakeRect(xOffset + x * size,
-									 yOffset + y * size,
-									 size, size);
-			MysterioPixel *pixel = [MysterioPixel pixelWithRect:rect
-													 borderSize:size * PIXEL_BORDER
-												   cornerRadius:size * PIXEL_CORNER_RADIUS
-														  color:color];
-			[colArray addObject:pixel];
-		}
-		[rowArray addObject:[NSArray arrayWithArray:colArray]];
-	}
-
-	return [NSArray arrayWithArray:rowArray];
-}
 
 - (instancetype)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
 {
@@ -76,18 +48,24 @@
 		int xOffset = (width - pixelSize * rows) / 2;
 		int yOffset = (height - pixelSize * cols) / 2;
 
-		self.bluePixels = [MysterioView createPixelsWithSize:pixelSize
-													   color:[[NSColor blueColor] colorWithAlphaComponent:0.0]
-														rows:rows
-													 columns:cols
-													 xOffset:xOffset
-													 yOffset:yOffset];
-		self.whitePixels = [MysterioView createPixelsWithSize:pixelSize
-														color:[[NSColor whiteColor] colorWithAlphaComponent:0.0]
-														rows:rows
-													 columns:cols
-													 xOffset:xOffset
-													 yOffset:yOffset];
+		self.blueLayer = [MysterioLayer layerWithPixelSize:pixelSize
+													 color:[NSColor blueColor]
+													  rows:rows
+												   columns:cols
+												   xOffset:xOffset
+												   yOffset:yOffset
+												borderSize:pixelSize * PIXEL_BORDER
+											  cornerRadius:pixelSize * PIXEL_CORNER_RADIUS];
+		self.blueLayer.delegate = [[MysterioBlueLayerAnimationDelegate alloc] init];
+
+		self.whiteLayer = [MysterioLayer layerWithPixelSize:pixelSize
+													  color:[NSColor whiteColor]
+													   rows:rows
+													columns:cols
+													xOffset:xOffset
+													yOffset:yOffset
+												 borderSize:pixelSize * PIXEL_BORDER
+											   cornerRadius:pixelSize * PIXEL_CORNER_RADIUS];
 	}
 
     return self;
@@ -97,25 +75,31 @@
 {
 	[super drawRect:rect];
 
-	[[NSGraphicsContext currentContext] setCompositingOperation:NSCompositeCopy];
-	for (NSArray *column in self.bluePixels) {
-		for (MysterioPixel *pixel in column) {
-			[pixel.color set];
-			[pixel fill];
-		}
-	}
+	//[[NSGraphicsContext currentContext] setCompositingOperation:NSCompositeCopy];
+	//[self.blueLayer fill];
 
-	[[NSGraphicsContext currentContext] setCompositingOperation:NSCompositeOverlay];
-	for (NSArray *column in self.whitePixels) {
-		for (MysterioPixel *pixel in column) {
-			[pixel.color set];
-			[pixel fill];
-		}
-	}
+	// FIXME: Only select Overlay if the corresponding blue pixel has an alpha value over threshold
+	//[[NSGraphicsContext currentContext] setCompositingOperation:NSCompositeOverlay];
+	//[self.whiteLayer fill];
 }
 
 - (void)animateOneFrame
 {
+	[super drawRect:self.bounds];
+	[self.blueLayer animateLayerOneFrame];
+
+	// Parameters: Ramp up/Ramp down/Stay (with biggest chance of Stay)
+	//             Ramp rate (Only changed when entering Ramp up/Ramp down)
+
+	// Chance of change can be different for blue and white pixels
+	// (blue should change less often than white)
+
+	// Ramp rate can be different for blue and white pixels
+	// (white should ramp up/down faster than blue)
+
+	// Finally: Add "rolling" vectors for increasing the chance of fast ramp up for white pixels
+
+	/*
 	for (NSArray *column in self.bluePixels) {
 		for (MysterioPixel *pixel in column) {
 			CGFloat alpha = pixel.color.alphaComponent;
@@ -150,19 +134,19 @@
 					break;
 
 				case 1:
-					alpha -= 0.1;
+					alpha -= 0.2;
 					break;
 
 				case 2:
-					alpha += 0.1;
+					alpha += 0.2;
 					break;
 			}
 
 			pixel.color = [pixel.color colorWithAlphaComponent:alpha];
 		}
 	}
-
-	[self setNeedsDisplay:YES];
+*/
+	//[self setNeedsDisplay:YES];
 
     return;
 }

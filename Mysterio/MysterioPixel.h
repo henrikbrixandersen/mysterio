@@ -10,9 +10,12 @@
 
 @interface MysterioPixel : NSObject
 
-@property (strong, nonatomic) NSColor *color;
+@property (copy, nonatomic) NSColor *color;
 
-+ (instancetype)pixelWithRect:(NSRect)rect borderSize:(CGFloat)borderSize cornerRadius:(CGFloat)cornerRadius color:(NSColor*)color;
++ (instancetype)pixelWithRect:(NSRect)rect
+				   borderSize:(CGFloat)borderSize
+				 cornerRadius:(CGFloat)cornerRadius
+						color:(NSColor*)color;
 
 - (void)fill;
 

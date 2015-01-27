@@ -1,0 +1,14 @@
+General TODO:
+- Add alpha delta property to MysterioPixel
+- Add currentColor + destinationColor (or destinationAlpha?) to MysterioPixel
+- Implement MysterioWhiteLayerAnimationDelegate
+- Implement MysterioInitializationLayer
+
+Options TODO:
+- Add frame rate setting
+- Add option for turning initialization animation on/off
+
+Optimization TODO:
+- Render MysterioPixel using CG instead of Cocoa
+- Render to CG layer in MysterioLayer for optimization
+- Add MysterioPixel::clear for optimization (only clear and redraw pixel if needed)
