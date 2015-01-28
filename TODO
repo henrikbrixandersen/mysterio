@@ -1,4 +1,5 @@
 General TODO:
+- Add initialization frame count constructor argument for skipping frames at the start of the animation
 - Add alpha delta property to MysterioPixel
 - Add currentColor + destinationColor (or destinationAlpha?) to MysterioPixel
 - Implement MysterioWhiteLayerAnimationDelegate
