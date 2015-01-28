@@ -9,7 +9,7 @@
 #import "MysterioPixel.h"
 #import "MysterioLayer.h"
 
-#pragma mark - Private interface
+#pragma mark - Private Interface
 
 @interface MysterioLayer()
 

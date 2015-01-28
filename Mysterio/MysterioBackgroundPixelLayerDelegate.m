@@ -12,11 +12,15 @@
 #import "MysterioPixel.h"
 #import "MysterioBackgroundPixelLayerDelegate.h"
 
+#pragma mark - Private Interface
+
 @interface MysterioBackgroundPixelLayerDelegate()
 
 @property (nonatomic) BOOL initialized;
 
 @end
+
+#pragma mark - Implementation
 
 @implementation MysterioBackgroundPixelLayerDelegate
 
