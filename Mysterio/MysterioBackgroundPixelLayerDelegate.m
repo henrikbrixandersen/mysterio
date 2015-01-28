@@ -1,6 +1,3 @@
-//
-//  MysterioBlueLayerAnimator.m
-//  Mysterio
 /**
  * Copyright (c) 2015, Henrik Brix Andersen <henrik@brixandersen.dk>
  * All rights reserved.
