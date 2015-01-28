@@ -8,10 +8,10 @@
 
 @import AppKit;
 
-@class MysterioLayer;
+@class dk_brixandersen_MysterioLayer;
 
 @protocol MysterioLayerAnimationDelegate<NSObject>
 
-- (void)animateLayerOneFrame:(MysterioLayer*)layer;
+- (void)animateLayerOneFrame:(dk_brixandersen_MysterioLayer*)layer;
 
 @end

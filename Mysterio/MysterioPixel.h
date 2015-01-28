@@ -8,7 +8,7 @@
 
 @import AppKit;
 
-@interface MysterioPixel : NSObject
+@interface dk_brixandersen_MysterioPixel : NSObject
 
 @property (copy, nonatomic) NSColor *color;
 
@@ -20,3 +20,5 @@
 - (void)fill;
 
 @end
+
+@compatibility_alias MysterioPixel dk_brixandersen_MysterioPixel;

@@ -8,6 +8,8 @@
 
 @import ScreenSaver;
 
-@interface MysterioView : ScreenSaverView
+@interface dk_brixandersen_MysterioView : ScreenSaverView
 
 @end
+
+@compatibility_alias MysterioView dk_brixandersen_MysterioView;

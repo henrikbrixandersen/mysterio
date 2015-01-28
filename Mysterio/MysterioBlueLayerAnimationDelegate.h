@@ -10,6 +10,8 @@
 
 #import "MysterioLayerAnimationDelegate.h"
 
-@interface MysterioBlueLayerAnimationDelegate : NSObject<MysterioLayerAnimationDelegate>
+@interface dk_brixandersen_MysterioBlueLayerAnimationDelegate : NSObject<MysterioLayerAnimationDelegate>
 
 @end
+
+@compatibility_alias MysterioBlueLayerAnimationDelegate dk_brixandersen_MysterioBlueLayerAnimationDelegate;

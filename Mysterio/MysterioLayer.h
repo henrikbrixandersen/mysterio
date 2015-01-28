@@ -10,7 +10,7 @@
 
 #include "MysterioLayerAnimationDelegate.h"
 
-@interface MysterioLayer : NSObject
+@interface dk_brixandersen_MysterioLayer : NSObject
 
 @property (strong, nonatomic) id<MysterioLayerAnimationDelegate> delegate;
 @property (strong, nonatomic, readonly) NSArray *pixels;
@@ -29,3 +29,5 @@
 - (void)animateLayerOneFrame;
 
 @end
+
+@compatibility_alias MysterioLayer dk_brixandersen_MysterioLayer;

@@ -1,5 +1,4 @@
 General TODO:
-- Prevent symbol clashes
 - Add alpha delta property to MysterioPixel
 - Add currentColor + destinationColor (or destinationAlpha?) to MysterioPixel
 - Implement MysterioWhiteLayerAnimationDelegate

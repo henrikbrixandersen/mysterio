@@ -23,6 +23,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2015 Henrik Brix Andersen. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
-	<string>MysterioView</string>
+	<string>dk_brixandersen_MysterioView</string>
 </dict>
 </plist>
