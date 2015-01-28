@@ -10,15 +10,15 @@
 
 #import "MysterioLayer.h"
 #import "MysterioPixel.h"
-#import "MysterioBlueLayerAnimationDelegate.h"
+#import "MysterioBackgroundPixelLayerDelegate.h"
 
-@interface MysterioBlueLayerAnimationDelegate()
+@interface MysterioBackgroundPixelLayerDelegate()
 
 @property (nonatomic) BOOL initialized;
 
 @end
 
-@implementation MysterioBlueLayerAnimationDelegate
+@implementation MysterioBackgroundPixelLayerDelegate
 
 - (void)initializeLayer:(MysterioLayer*)layer
 {

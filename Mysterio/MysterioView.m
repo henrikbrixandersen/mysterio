@@ -7,7 +7,7 @@
 //
 
 #import "MysterioLayer.h"
-#import "MysterioBlueLayerAnimationDelegate.h"
+#import "MysterioBackgroundPixelLayerDelegate.h"
 #import "MysterioView.h"
 
 #pragma mark - Definitions
@@ -22,8 +22,8 @@
 
 @interface MysterioView()
 
-@property (strong, nonatomic) MysterioLayer *blueLayer;
-@property (strong, nonatomic) MysterioLayer *whiteLayer;
+@property (strong, nonatomic) MysterioLayer *backgroundLayer;
+@property (strong, nonatomic) MysterioLayer *foregroundLayer;
 
 @end
 
@@ -48,24 +48,24 @@
 		int xOffset = (width - pixelSize * rows) / 2;
 		int yOffset = (height - pixelSize * cols) / 2;
 
-		self.blueLayer = [MysterioLayer layerWithPixelSize:pixelSize
-													 color:[NSColor blueColor]
-													  rows:rows
-												   columns:cols
-												   xOffset:xOffset
-												   yOffset:yOffset
-												borderSize:pixelSize * PIXEL_BORDER
-											  cornerRadius:pixelSize * PIXEL_CORNER_RADIUS];
-		self.blueLayer.delegate = [[MysterioBlueLayerAnimationDelegate alloc] init];
+		self.backgroundLayer = [MysterioLayer layerWithPixelSize:pixelSize
+														   color:[NSColor blueColor]
+															rows:rows
+														 columns:cols
+														 xOffset:xOffset
+														 yOffset:yOffset
+													  borderSize:pixelSize * PIXEL_BORDER
+													cornerRadius:pixelSize * PIXEL_CORNER_RADIUS];
+		self.backgroundLayer.delegate = [[MysterioBackgroundPixelLayerDelegate alloc] init];
 
-		self.whiteLayer = [MysterioLayer layerWithPixelSize:pixelSize
-													  color:[NSColor whiteColor]
-													   rows:rows
-													columns:cols
-													xOffset:xOffset
-													yOffset:yOffset
-												 borderSize:pixelSize * PIXEL_BORDER
-											   cornerRadius:pixelSize * PIXEL_CORNER_RADIUS];
+		self.foregroundLayer = [MysterioLayer layerWithPixelSize:pixelSize
+														   color:[NSColor whiteColor]
+															rows:rows
+														 columns:cols
+														 xOffset:xOffset
+														 yOffset:yOffset
+													  borderSize:pixelSize * PIXEL_BORDER
+													cornerRadius:pixelSize * PIXEL_CORNER_RADIUS];
 	}
 
     return self;
@@ -86,7 +86,7 @@
 - (void)animateOneFrame
 {
 	[super drawRect:self.bounds];
-	[self.blueLayer animateLayerOneFrame];
+	[self.backgroundLayer animateLayerOneFrame];
 
 	// Parameters: Ramp up/Ramp down/Stay (with biggest chance of Stay)
 	//             Ramp rate (Only changed when entering Ramp up/Ramp down)

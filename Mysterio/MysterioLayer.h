@@ -8,11 +8,11 @@
 
 @import AppKit;
 
-#include "MysterioLayerAnimationDelegate.h"
+#include "MysterioLayerDelegate.h"
 
 @interface dk_brixandersen_MysterioLayer : NSObject
 
-@property (strong, nonatomic) id<MysterioLayerAnimationDelegate> delegate;
+@property (strong, nonatomic) id<MysterioLayerDelegate> delegate;
 @property (strong, nonatomic, readonly) NSArray *pixels;
 @property (nonatomic, readonly) NSInteger rows;
 @property (nonatomic, readonly) NSInteger columns;

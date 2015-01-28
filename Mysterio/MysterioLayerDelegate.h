@@ -10,7 +10,7 @@
 
 @class dk_brixandersen_MysterioLayer;
 
-@protocol MysterioLayerAnimationDelegate<NSObject>
+@protocol MysterioLayerDelegate<NSObject>
 
 - (void)animateLayerOneFrame:(dk_brixandersen_MysterioLayer*)layer;
 

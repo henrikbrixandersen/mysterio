@@ -11,8 +11,8 @@
 		8869FAF71A68579D00DF8030 /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8869FAF61A68579D00DF8030 /* thumbnail@2x.png */; };
 		8872AD2C1A6DA7440029FC17 /* MysterioLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8872AD2A1A6DA7440029FC17 /* MysterioLayer.h */; };
 		8872AD2D1A6DA7440029FC17 /* MysterioLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8872AD2B1A6DA7440029FC17 /* MysterioLayer.m */; };
-		8872AD351A6DB3700029FC17 /* MysterioBlueLayerAnimationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 8872AD331A6DB3700029FC17 /* MysterioBlueLayerAnimationDelegate.h */; };
-		8872AD361A6DB3700029FC17 /* MysterioBlueLayerAnimationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8872AD341A6DB3700029FC17 /* MysterioBlueLayerAnimationDelegate.m */; };
+		8872AD351A6DB3700029FC17 /* MysterioBackgroundPixelLayerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 8872AD331A6DB3700029FC17 /* MysterioBackgroundPixelLayerDelegate.h */; };
+		8872AD361A6DB3700029FC17 /* MysterioBackgroundPixelLayerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8872AD341A6DB3700029FC17 /* MysterioBackgroundPixelLayerDelegate.m */; };
 		889252351A62E21700C7A9C9 /* MysterioView.h in Headers */ = {isa = PBXBuildFile; fileRef = 889252341A62E21700C7A9C9 /* MysterioView.h */; };
 		889252371A62E21700C7A9C9 /* MysterioView.m in Sources */ = {isa = PBXBuildFile; fileRef = 889252361A62E21700C7A9C9 /* MysterioView.m */; };
 		88FAFBC41A645559000110F7 /* MysterioPixel.h in Headers */ = {isa = PBXBuildFile; fileRef = 88FAFBC21A645559000110F7 /* MysterioPixel.h */; };
@@ -24,9 +24,9 @@
 		8869FAF61A68579D00DF8030 /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail@2x.png"; sourceTree = "<group>"; };
 		8872AD2A1A6DA7440029FC17 /* MysterioLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MysterioLayer.h; sourceTree = "<group>"; };
 		8872AD2B1A6DA7440029FC17 /* MysterioLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysterioLayer.m; sourceTree = "<group>"; };
-		8872AD321A6DB1D80029FC17 /* MysterioLayerAnimationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MysterioLayerAnimationDelegate.h; sourceTree = "<group>"; };
-		8872AD331A6DB3700029FC17 /* MysterioBlueLayerAnimationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MysterioBlueLayerAnimationDelegate.h; sourceTree = "<group>"; };
-		8872AD341A6DB3700029FC17 /* MysterioBlueLayerAnimationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysterioBlueLayerAnimationDelegate.m; sourceTree = "<group>"; };
+		8872AD321A6DB1D80029FC17 /* MysterioLayerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MysterioLayerDelegate.h; sourceTree = "<group>"; };
+		8872AD331A6DB3700029FC17 /* MysterioBackgroundPixelLayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MysterioBackgroundPixelLayerDelegate.h; sourceTree = "<group>"; };
+		8872AD341A6DB3700029FC17 /* MysterioBackgroundPixelLayerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysterioBackgroundPixelLayerDelegate.m; sourceTree = "<group>"; };
 		8892522F1A62E21700C7A9C9 /* Mysterio.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Mysterio.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		889252331A62E21700C7A9C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		889252341A62E21700C7A9C9 /* MysterioView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MysterioView.h; sourceTree = "<group>"; };
@@ -68,11 +68,11 @@
 		889252311A62E21700C7A9C9 /* Mysterio */ = {
 			isa = PBXGroup;
 			children = (
-				8872AD331A6DB3700029FC17 /* MysterioBlueLayerAnimationDelegate.h */,
-				8872AD341A6DB3700029FC17 /* MysterioBlueLayerAnimationDelegate.m */,
+				8872AD331A6DB3700029FC17 /* MysterioBackgroundPixelLayerDelegate.h */,
+				8872AD341A6DB3700029FC17 /* MysterioBackgroundPixelLayerDelegate.m */,
 				8872AD2A1A6DA7440029FC17 /* MysterioLayer.h */,
 				8872AD2B1A6DA7440029FC17 /* MysterioLayer.m */,
-				8872AD321A6DB1D80029FC17 /* MysterioLayerAnimationDelegate.h */,
+				8872AD321A6DB1D80029FC17 /* MysterioLayerDelegate.h */,
 				88FAFBC21A645559000110F7 /* MysterioPixel.h */,
 				88FAFBC31A645559000110F7 /* MysterioPixel.m */,
 				889252341A62E21700C7A9C9 /* MysterioView.h */,
@@ -103,7 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8872AD2C1A6DA7440029FC17 /* MysterioLayer.h in Headers */,
-				8872AD351A6DB3700029FC17 /* MysterioBlueLayerAnimationDelegate.h in Headers */,
+				8872AD351A6DB3700029FC17 /* MysterioBackgroundPixelLayerDelegate.h in Headers */,
 				889252351A62E21700C7A9C9 /* MysterioView.h in Headers */,
 				88FAFBC41A645559000110F7 /* MysterioPixel.h in Headers */,
 			);
@@ -180,7 +180,7 @@
 			files = (
 				8872AD2D1A6DA7440029FC17 /* MysterioLayer.m in Sources */,
 				88FAFBC51A645559000110F7 /* MysterioPixel.m in Sources */,
-				8872AD361A6DB3700029FC17 /* MysterioBlueLayerAnimationDelegate.m in Sources */,
+				8872AD361A6DB3700029FC17 /* MysterioBackgroundPixelLayerDelegate.m in Sources */,
 				889252371A62E21700C7A9C9 /* MysterioView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
