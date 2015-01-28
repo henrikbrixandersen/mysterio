@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		880E29251A790E8600CD637C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8895932C1A783A1D00E54658 /* LICENSE */; };
 		8869FAF51A672A8C00DF8030 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 8869FAF41A672A8C00DF8030 /* thumbnail.png */; };
 		8869FAF71A68579D00DF8030 /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8869FAF61A68579D00DF8030 /* thumbnail@2x.png */; };
 		8872AD2C1A6DA7440029FC17 /* MysterioLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8872AD2A1A6DA7440029FC17 /* MysterioLayer.h */; };
@@ -166,6 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				880E29251A790E8600CD637C /* LICENSE in Resources */,
 				8869FAF51A672A8C00DF8030 /* thumbnail.png in Resources */,
 				8869FAF71A68579D00DF8030 /* thumbnail@2x.png in Resources */,
 			);
